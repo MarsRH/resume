@@ -9,9 +9,9 @@
 % use xifthen
 \RequirePackage{xifthen}
 % use fontawesome
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 % use xcolor for customizing color
-\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{xcolor}
 % loading fonts
 \RequirePackage{fontspec}
 % Main document font
@@ -24,6 +24,8 @@
   BoldItalicFont = *-bolditalic ,
   SmallCapsFont = Fontin-SmallCaps
 ]{texgyretermes}
+
+\definecolor{primary}{RGB}{0,102,204}
 
 \RequirePackage[
 	a4paper,
@@ -46,8 +48,8 @@
   {\Large\scshape\raggedright} % Make the \section headers large (\Large),
                                % small capitals (\scshape) and left aligned (\raggedright)
   {}{0em}                      % Can be used to give a prefix to all sections, like 'Section ...'
-  {}                           % Can be used to insert code before the heading
-  [\titlerule]                 % Inserts a horizontal line after the heading
+  {\textcolor{primary}}                           % Can be used to insert code before the heading
+  [\color{primary}\titlerule]                 % Inserts a horizontal line after the heading
 \titlespacing*{\section}{0cm}{*1}{*1}
 
 \titleformat{\subsection}
@@ -67,18 +69,18 @@
 }
 
 \newcommand{\name}[1]{
-  \centerline{\Huge\scshape{#1}}
+  \centerline{\Huge\scshape\textcolor{primary}{#1}}
   \vspace{1.2ex}
 }
 
 \newcommand{\contactInfo}[4]{
-  \centerline{\sffamily\large{\ {#1} \textperiodcentered\ \ {#2}}
+  \centerline{\sffamily\large{\ {#1} \textperiodcentered {#2}}
     \ifthenelse{\isempty{#3}}%
       { } % if {#3} is empty
-      {\textperiodcentered\ \ {#3} } % homepage, no space before \text...
+      {\textperiodcentered {#3} } % homepage, no space before \text...
     \ifthenelse{\isempty{#4}}%
       { } % if {#3} is empty
-      {\textperiodcentered\ \ {#4} }
+      {\textperiodcentered {#4} }
   }
   \vspace{0.7ex}
 }
